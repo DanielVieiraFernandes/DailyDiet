@@ -1,3 +1,17 @@
 {
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@routes/*": ["./src/routes/*"],
+      "@storage/*": ["./src/storage/*"],
+      "@components/*": ["./src/components/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@services/*": ["./src/services/*"]
+    }
+  },
   "extends": "@react-native/typescript-config/tsconfig.json"
 }
