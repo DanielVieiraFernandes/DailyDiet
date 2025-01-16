@@ -1,14 +1,19 @@
- export declare global {
+export declare global {
   namespace ReactNavigation {
-    interface RootParamList{
+    interface RootParamList {
       Home: undefined;
       StatisticsScreen: {
-        colorType?: string;
+        colorType: string;
+        title: string;
+        subtitle: string;
       };
+      NewMeal: undefined;
     }
   }
 }
 
 export type RootParams = {
-  colorType?: string;
+  colorType: string;
+  title: string;
+  subtitle: string;
 }

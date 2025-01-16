@@ -11,8 +11,9 @@ import {useNavigation} from '@react-navigation/native';
 type HeaderProps = {
   CANGOBACK?: boolean;
   color?: string;
+  title?: string;
 };
-export function Header({CANGOBACK = false, color}: HeaderProps) {
+export function Header({CANGOBACK = false, color, title}: HeaderProps) {
   const {colors} = useTheme<ThemeProps>();
 
   const navigation = useNavigation();
@@ -22,11 +23,10 @@ export function Header({CANGOBACK = false, color}: HeaderProps) {
   return (
     <Box
       width="100%"
-      height={60}
+      height={20}
       justifyContent="space-between"
-      marginVertical="l"
+      marginVertical="m"
       flexDirection="row"
-
       >
       {!CANGOBACK ? (
         <React.Fragment>
@@ -40,9 +40,9 @@ export function Header({CANGOBACK = false, color}: HeaderProps) {
       ) : (
         <React.Fragment>
           <TouchableOpacity onPress={handleNavigation} style={{zIndex: 1}}>
-            <ArrowLeft size={40} color={color} />
+            <ArrowLeft size={30} color={color} />
           </TouchableOpacity>
-          <Text variant="HeaderTitle" style={styles.headerTitle}></Text>
+          <Text variant="HeaderTitle" style={styles.headerTitle}>{title}</Text>
         </React.Fragment>
       )}
     </Box>

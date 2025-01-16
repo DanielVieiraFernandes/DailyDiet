@@ -27,6 +27,8 @@ export function MealStatus({
   const handleNavigation = () => {
     navigation.navigate('StatisticsScreen', {
       colorType: type === 'HEALTHY' ? colors.GREEN_DARK : colors.RED_DARK,
+      subtitle: "das refeições dentro da dieta",
+      title: percentage,
     });
   };
 

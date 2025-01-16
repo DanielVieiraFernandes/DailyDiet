@@ -44,6 +44,22 @@ const theme = createTheme({
       fontFamily: fontFamily.BOLD,
       fontSize: sizes.s,
       color: 'GRAY_1'
+    },
+    TitleStatistics:{
+      fontFamily: fontFamily.BOLD,
+      fontSize: sizes.m,
+      color: 'GRAY_1',
+    },
+    TitleCard:{
+      fontFamily: fontFamily.BOLD,
+      fontSize: sizes.xxl,
+      color: 'GRAY_1',
+    },
+    SubtitleCard:{
+      fontFamily: fontFamily.REGULAR,
+      fontSize: sizes.m,
+      color: 'GRAY_2',
+      textAlign: "center"
     }
   },
 });

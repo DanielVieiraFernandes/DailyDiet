@@ -10,17 +10,21 @@
     "test": "jest"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
     "@shopify/restyle": "^2.4.4",
+    "dayjs": "^1.11.13",
     "phosphor-react-native": "^2.2.3",
     "react": "18.3.1",
+    "react-hook-form": "^7.54.2",
     "react-native": "0.76.6",
     "react-native-gesture-handler": "^2.22.0",
     "react-native-mmkv": "^3.2.0",
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.5.0",
-    "react-native-svg": "^15.11.1"
+    "react-native-svg": "^15.11.1",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
