@@ -1,15 +1,24 @@
 import {Box} from '@components/Box/Box';
 import {Text} from '@components/Text/Text';
+import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 
 export type MealsProps = {
   type: boolean;
   hours: string;
   name: string;
+  id: string;
 };
-export function Meals({type, hours, name}: MealsProps) {
+export function MealCard({type, hours, name, id}: MealsProps) {
+  const navigation = useNavigation();
+
+  const handleNavigation = () =>
+    navigation.navigate('MealDetails', {
+      id,
+    });
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={handleNavigation}>
       <Box
         flexDirection="row"
         borderColor="GRAY_5"

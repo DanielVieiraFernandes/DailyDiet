@@ -6,20 +6,28 @@ import {Button} from '@components/Button/Button';
 import {Text} from '@components/Text/Text';
 import {Box} from '@components/Box/Box';
 import {useNavigation} from '@react-navigation/native';
-import {getMealStorage, Meals} from '@services/saveMeal';
+import {getMealStorage, Meals} from '@services/MealStorage';
 import {SectionList} from 'react-native';
-import {Meals as MealCard} from '@components/Meals/Meals';
+import {MealCard} from '@components/MealCard/MealCard';
 import {Empty} from '@components/Empty/Empty';
 
 export function Home() {
   const [data, setData] = useState<Meals[]>([]);
+  const [refresh, setRefresh] = useState<boolean>(false);
 
   const {fetchMeals} = getMealStorage();
 
   useEffect(() => {
-    const response = fetchMeals();
-    if (response !== undefined) {
-      setData(JSON.parse(response));
+    try {
+      setRefresh(true);
+      const response = fetchMeals();
+      if (response !== undefined) {
+        setData(JSON.parse(response));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setRefresh(false);
     }
   }, []);
 
@@ -35,7 +43,7 @@ export function Home() {
       <Text variant="TitleMeals" mb="m">
         Refeições
       </Text>
-      <Button.Default plus title="Nova refeição" onPress={handleNavigation} />
+      <Button.Default icon title="Nova refeição" onPress={handleNavigation} />
       <Box flex={1} pt="xl">
         <SectionList
           sections={data}
@@ -46,10 +54,17 @@ export function Home() {
             </Text>
           )}
           renderItem={({item}) => (
-            <MealCard type={item.isPart} hours={item.hour} name={item.name} />
+            <MealCard
+              type={item.isPart}
+              hours={item.hour}
+              name={item.name}
+              id={item.id}
+            />
           )}
           contentContainerStyle={{paddingBottom: 80, flex: 1}}
           ListEmptyComponent={() => <Empty />}
+          refreshing={refresh}
+          onRefresh={() => {}}
         />
       </Box>
     </Screen>

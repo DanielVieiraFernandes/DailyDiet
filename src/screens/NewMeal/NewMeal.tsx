@@ -8,7 +8,7 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 import {MealProps, MealSchema} from '../../schemas/MealSchema';
 import dayjs from 'dayjs';
-import {getMealStorage} from '@services/saveMeal';
+import {getMealStorage} from '@services/MealStorage';
 import {useEffect} from 'react';
 import {storage} from '@storage/dailyDietStorage';
 import {useFormattedFunctions} from '@utils/formattedFunctions';

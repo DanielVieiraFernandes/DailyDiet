@@ -8,15 +8,14 @@ import {Router} from '@routes/Router';
 export default function App() {
   return (
     <SafeAreaProvider>
-    
-        <ThemeProvider theme={theme}>
-          <StatusBar
-            barStyle="dark-content"
-            translucent
-            backgroundColor="transparent"
-          />
-          <Router />
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <StatusBar
+          barStyle="dark-content"
+          translucent
+          backgroundColor="transparent"
+        />
+        <Router />
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }

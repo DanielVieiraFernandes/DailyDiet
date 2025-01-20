@@ -10,6 +10,9 @@ export declare global {
       NewMeal: undefined;
       Summary: {
         isParty: boolean;
+      };
+      MealDetails: {
+        id: string;
       }
     }
   }
@@ -20,4 +23,5 @@ export type RootParams = {
   title?: string;
   subtitle?: string;
   isParty?: boolean;
+  id?: string;
 }

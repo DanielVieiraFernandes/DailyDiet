@@ -8,38 +8,63 @@ import {
   View,
   ViewProps,
 } from 'react-native';
-import {Plus} from 'phosphor-react-native';
+import {Pencil, Plus, Trash} from 'phosphor-react-native';
 import {Box} from '@components/Box/Box';
-import {color, useTheme} from '@shopify/restyle';
+import {BoxProps, color, useTheme} from '@shopify/restyle';
 import {ThemeProps} from '@theme/theme';
 type ButtonProps = TouchableNativeFeedbackProps & {
-  plus?: boolean;
+  icon?: boolean;
   title: string;
+  edit?: boolean;
+  type?: 'PRIMARY' | 'SECONDARY';
+  boxProps?: BoxProps<ThemeProps>;
 };
 
 export function Button({children}: ViewProps) {
   return <View>{children}</View>;
 }
 
-function Default({title, plus, ...restProps}: ButtonProps) {
+function Default({
+  title,
+  icon,
+  type = 'PRIMARY',
+  edit,
+  boxProps,
+  ...restProps
+}: ButtonProps) {
   return (
     <TouchableNativeFeedback
       background={TouchableNativeFeedback.Ripple(
-        'rgba(255, 255, 255, 0.2)',
+        type === 'PRIMARY' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)',
         false,
       )}
       {...restProps}>
       <Box
         width="100%"
         height={50}
-        bg="GRAY_2"
+        bg={type === 'PRIMARY' ? 'GRAY_2' : undefined}
         borderRadius={10}
+        borderWidth={1}
+        borderColor="GRAY_1"
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
-        gap="s">
-        {plus && <Plus size={20} color="white" />}
-        <Text variant="ButtonTitle">{title}</Text>
+        gap="s"
+        {...boxProps}
+        >
+        {icon &&
+          (type === 'PRIMARY' ? (
+            <Plus size={20} color="white" />
+          ) : edit ? (
+            <Pencil size={20} color="black" />
+          ) : (
+            <Trash size={20} color="black" />
+          ))}
+        <Text
+          variant="ButtonTitle"
+          color={type === 'SECONDARY' ? 'GRAY_1' : 'WHITE'}>
+          {title}
+        </Text>
       </Box>
     </TouchableNativeFeedback>
   );
@@ -59,9 +84,9 @@ function InDiet({title, isSelected, type, ...rest}: InDietProps) {
       flex: 1,
       height: 50,
       backgroundColor:
-        type === 'YES' && isSelected 
+        type === 'YES' && isSelected
           ? colors.GREEN_LIGHT
-          : type === 'NOT' && !isSelected 
+          : type === 'NOT' && !isSelected
           ? colors.RED_LIGHT
           : colors.GRAY_6,
       borderRadius: 5,

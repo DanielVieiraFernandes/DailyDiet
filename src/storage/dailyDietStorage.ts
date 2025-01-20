@@ -4,4 +4,4 @@ export const storage = new MMKV();
 
 export const MEALKEY = "@mealkey";
 
-storage.clearAll();
+// storage.clearAll();
