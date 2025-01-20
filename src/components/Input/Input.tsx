@@ -1,26 +1,41 @@
 import {Box} from '@components/Box/Box';
-import {useTheme} from '@shopify/restyle';
+import {BoxProps, useTheme} from '@shopify/restyle';
 import {ThemeProps} from '@theme/theme';
-import {TextInput, TextInputProps} from 'react-native';
+import {Controller, UseControllerProps} from 'react-hook-form';
+import {ColorValue, TextInput, TextInputProps} from 'react-native';
+import {MealProps} from 'src/schemas/MealSchema';
 
-type InputProps = TextInputProps & {};
+type InputProps = TextInputProps & {
+  useControllerProps: UseControllerProps<MealProps>;
+  boxProps?: BoxProps<ThemeProps>;
+  color?:ColorValue;
+};
 
-export function Input({...rest}: InputProps) {
+export function Input({useControllerProps, boxProps, color, style, ...rest}: InputProps) {
   const {textVariants} = useTheme<ThemeProps>();
   const {TitleMeals} = textVariants;
 
   return (
-    <Box flex={1} borderColor="GRAY_5" borderWidth={1} borderRadius={10}>
-      <TextInput
-        style={{
-          flex: 1,
-          paddingHorizontal: 16,
-          fontFamily: TitleMeals.fontFamily,
-          fontSize: TitleMeals.fontSize,
-          color: TitleMeals.color,
-        }}
-        {...rest}
-      />
-    </Box>
+    <Controller
+      render={({field: {onBlur, onChange, value}}) => (
+        <Box flex={1} borderColor="GRAY_5" borderWidth={1} borderRadius={10} {...boxProps}>
+          <TextInput
+            onChangeText={onChange}
+            onChange={onChange}
+            onBlur={onBlur}
+            value={String(value)}
+            style={[{
+              flex: 1,
+              paddingHorizontal: 16,
+              fontFamily: TitleMeals.fontFamily,
+              fontSize: TitleMeals.fontSize,
+              color: TitleMeals.color || color,
+            }, style]}
+            {...rest}
+          />
+        </Box>
+      )}
+      {...useControllerProps}
+    />
   );
-}   
+}

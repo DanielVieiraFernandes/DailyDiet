@@ -23,11 +23,10 @@ export function Header({CANGOBACK = false, color, title}: HeaderProps) {
   return (
     <Box
       width="100%"
-      height={20}
+      height={100}
       justifyContent="space-between"
-      marginVertical="m"
       flexDirection="row"
-      >
+      alignItems="center">
       {!CANGOBACK ? (
         <React.Fragment>
           <Image source={logoImg} style={styles.img} />
@@ -38,12 +37,15 @@ export function Header({CANGOBACK = false, color, title}: HeaderProps) {
             backgroundColor="GREEN_DARK"></Box>
         </React.Fragment>
       ) : (
-        <React.Fragment>
+        <>
           <TouchableOpacity onPress={handleNavigation} style={{zIndex: 1}}>
             <ArrowLeft size={30} color={color} />
           </TouchableOpacity>
-          <Text variant="HeaderTitle" style={styles.headerTitle}>{title}</Text>
-        </React.Fragment>
+          <Text variant="HeaderTitle" textAlign="center">
+            {title}
+          </Text>
+          <Box flex={0.15} />
+        </>
       )}
     </Box>
   );
@@ -54,11 +56,5 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50,
     resizeMode: 'contain',
-  },
-  headerTitle: {
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    textAlign: 'center',
   },
 });

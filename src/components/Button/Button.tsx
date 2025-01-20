@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Plus} from 'phosphor-react-native';
 import {Box} from '@components/Box/Box';
-import {useTheme} from '@shopify/restyle';
+import {color, useTheme} from '@shopify/restyle';
 import {ThemeProps} from '@theme/theme';
 type ButtonProps = TouchableNativeFeedbackProps & {
   plus?: boolean;
@@ -21,7 +21,7 @@ export function Button({children}: ViewProps) {
   return <View>{children}</View>;
 }
 
-function Default({title,plus,...restProps}: ButtonProps) {
+function Default({title, plus, ...restProps}: ButtonProps) {
   return (
     <TouchableNativeFeedback
       background={TouchableNativeFeedback.Ripple(
@@ -47,17 +47,31 @@ function Default({title,plus,...restProps}: ButtonProps) {
 
 type InDietProps = TouchableOpacityProps & {
   title: string;
+  isSelected: boolean;
+  type: 'YES' | 'NOT';
 };
 
-function InDiet({title}: InDietProps) {
+function InDiet({title, isSelected, type, ...rest}: InDietProps) {
   const {colors, spacing} = useTheme<ThemeProps>();
 
   const styles = StyleSheet.create({
     InDiet: {
       flex: 1,
       height: 50,
-      backgroundColor: colors.GRAY_6,
+      backgroundColor:
+        type === 'YES' && isSelected 
+          ? colors.GREEN_LIGHT
+          : type === 'NOT' && !isSelected 
+          ? colors.RED_LIGHT
+          : colors.GRAY_6,
       borderRadius: 5,
+      borderColor:
+        type === 'YES' && isSelected
+          ? colors.GREEN_DARK
+          : type === 'NOT' && !isSelected
+          ? colors.RED_DARK
+          : colors.GRAY_6,
+      borderWidth: 1,
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
@@ -66,7 +80,7 @@ function InDiet({title}: InDietProps) {
   });
 
   return (
-    <TouchableOpacity style={styles.InDiet} activeOpacity={0.7}>
+    <TouchableOpacity style={styles.InDiet} activeOpacity={0.7} {...rest}>
       <Box
         width={8}
         height={8}

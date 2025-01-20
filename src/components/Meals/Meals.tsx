@@ -3,7 +3,7 @@ import {Text} from '@components/Text/Text';
 import {TouchableOpacity} from 'react-native';
 
 export type MealsProps = {
-  type: 'INSIDE' | 'OUTSIDE';
+  type: boolean;
   hours: string;
   name: string;
 };
@@ -17,7 +17,8 @@ export function Meals({type, hours, name}: MealsProps) {
         borderRadius={10}
         height={50}
         justifyContent="space-around"
-        alignItems="center">
+        alignItems="center"
+        mb="s">
         <Box flexDirection="row" alignItems="center">
           <Text variant="HourMeals" textAlign="center" marginRight="m">
             {hours}
@@ -28,7 +29,7 @@ export function Meals({type, hours, name}: MealsProps) {
           {name}
         </Text>
         <Box
-          bg={type === 'INSIDE' ? 'GREEN_MID' : 'RED_MID'}
+          bg={type ? 'GREEN_MID' : 'RED_MID'}
           width={14}
           height={14}
           borderRadius={10000}

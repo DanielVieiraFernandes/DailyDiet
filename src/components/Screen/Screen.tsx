@@ -3,7 +3,7 @@ import {BoxProps} from '@shopify/restyle';
 import {ThemeProps} from '@theme/theme';
 
 type ScreenProps = BoxProps<ThemeProps> & {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export function Screen({children, ...boxProps}: ScreenProps) {

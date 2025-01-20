@@ -60,6 +60,19 @@ const theme = createTheme({
       fontSize: sizes.m,
       color: 'GRAY_2',
       textAlign: "center"
+    },
+    TitleSummary:{
+      fontFamily: fontFamily.BOLD,
+      fontSize: sizes.xxl,
+    },
+    SubtitleSummary:{
+      fontFamily: fontFamily.REGULAR,
+      fontSize: sizes.l,
+    },
+    TitleDate:{
+      fontFamily: fontFamily.BOLD,
+      fontSize: sizes.xl,
+      color: "GRAY_1"
     }
   },
 });

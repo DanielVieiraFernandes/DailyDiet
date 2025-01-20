@@ -2,6 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Home} from '@screens/Home/Home';
 import { NewMeal } from '@screens/NewMeal/NewMeal';
 import {StatisticsScreen} from '@screens/Statistics/StatisticsScreen';
+import { Summary } from '@screens/Summary/Summary';
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -15,6 +16,7 @@ export function AppStack() {
       <Screen name="Home" component={Home} />
       <Screen name="StatisticsScreen" component={StatisticsScreen} />
       <Screen name="NewMeal" component={NewMeal} />
+      <Screen name="Summary" component={Summary} />
     </Navigator>
   );
 }

@@ -24,6 +24,7 @@
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.5.0",
     "react-native-svg": "^15.11.1",
+    "use-debounce": "^10.0.4",
     "zod": "^3.24.1"
   },
   "devDependencies": {

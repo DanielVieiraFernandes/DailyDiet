@@ -8,12 +8,16 @@ export declare global {
         subtitle: string;
       };
       NewMeal: undefined;
+      Summary: {
+        isParty: boolean;
+      }
     }
   }
 }
 
 export type RootParams = {
-  colorType: string;
-  title: string;
-  subtitle: string;
+  colorType?: string;
+  title?: string;
+  subtitle?: string;
+  isParty?: boolean;
 }
