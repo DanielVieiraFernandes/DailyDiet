@@ -16,6 +16,8 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		54043E6545064B51A49B0CD7 /* NunitoSans_10pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB7D923092084FC7A4EAE118 /* NunitoSans_10pt-Bold.ttf */; };
 		7B7C9030B164454A86DE0877 /* NunitoSans_10pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9273B5B5DFE41B1AD625455 /* NunitoSans_10pt-Regular.ttf */; };
+		950F6B3D52A94623B88A93EC /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90FFCFBDCA634946BC584FAA /* BootSplash.storyboard */; };
+		20967CC01FFB415DB47FDEC9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D379D28878A49CB84B4AEC2 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FB7D923092084FC7A4EAE118 /* NunitoSans_10pt-Bold.ttf */ = {isa = PBXFileReference; name = "NunitoSans_10pt-Bold.ttf"; path = "../assets/fonts/NunitoSans_10pt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F9273B5B5DFE41B1AD625455 /* NunitoSans_10pt-Regular.ttf */ = {isa = PBXFileReference; name = "NunitoSans_10pt-Regular.ttf"; path = "../assets/fonts/NunitoSans_10pt-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90FFCFBDCA634946BC584FAA /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "DailyDiet/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0D379D28878A49CB84B4AEC2 /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "DailyDiet/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				90FFCFBDCA634946BC584FAA /* BootSplash.storyboard */,
+				0D379D28878A49CB84B4AEC2 /* Colors.xcassets */,
 			);
 			name = DailyDiet;
 			sourceTree = "<group>";
@@ -262,6 +268,8 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				54043E6545064B51A49B0CD7 /* NunitoSans_10pt-Bold.ttf in Resources */,
 				7B7C9030B164454A86DE0877 /* NunitoSans_10pt-Regular.ttf in Resources */,
+				950F6B3D52A94623B88A93EC /* BootSplash.storyboard in Resources */,
+				20967CC01FFB415DB47FDEC9 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
