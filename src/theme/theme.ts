@@ -73,6 +73,11 @@ const theme = createTheme({
       fontFamily: fontFamily.BOLD,
       fontSize: sizes.xl,
       color: "GRAY_1"
+    },
+    txtIsParty:{
+      fontFamily: fontFamily.REGULAR,
+      fontSize: sizes.m,
+      color: "GRAY_1"
     }
   },
 });

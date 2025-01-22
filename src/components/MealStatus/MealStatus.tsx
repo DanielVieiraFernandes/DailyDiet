@@ -27,8 +27,7 @@ export function MealStatus({
   const handleNavigation = () => {
     navigation.navigate('StatisticsScreen', {
       colorType: type === 'HEALTHY' ? colors.GREEN_DARK : colors.RED_DARK,
-      subtitle: "das refeições dentro da dieta",
-      title: percentage,
+      title: "das refeições dentro da dieta",
     });
   };
 
@@ -46,7 +45,7 @@ export function MealStatus({
           style={styles.icon}
           color={type === 'HEALTHY' ? colors.GREEN_DARK : colors.RED_DARK}
         />
-        <Text variant="TitlePercent">{percentage}%</Text>
+        <Text variant="TitlePercent">{percentage}</Text>
         <Text variant="SubtitlesPercent">das refeições dentro da dieta</Text>
       </Box>
     </TouchableOpacity>

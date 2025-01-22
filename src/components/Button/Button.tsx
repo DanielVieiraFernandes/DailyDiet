@@ -13,9 +13,7 @@ import {Box} from '@components/Box/Box';
 import {BoxProps, color, useTheme} from '@shopify/restyle';
 import {ThemeProps} from '@theme/theme';
 type ButtonProps = TouchableNativeFeedbackProps & {
-  icon?: boolean;
   title: string;
-  edit?: boolean;
   type?: 'PRIMARY' | 'SECONDARY';
   boxProps?: BoxProps<ThemeProps>;
 };
@@ -26,10 +24,9 @@ export function Button({children}: ViewProps) {
 
 function Default({
   title,
-  icon,
   type = 'PRIMARY',
-  edit,
   boxProps,
+  children,
   ...restProps
 }: ButtonProps) {
   return (
@@ -52,14 +49,7 @@ function Default({
         gap="s"
         {...boxProps}
         >
-        {icon &&
-          (type === 'PRIMARY' ? (
-            <Plus size={20} color="white" />
-          ) : edit ? (
-            <Pencil size={20} color="black" />
-          ) : (
-            <Trash size={20} color="black" />
-          ))}
+          {children}
         <Text
           variant="ButtonTitle"
           color={type === 'SECONDARY' ? 'GRAY_1' : 'WHITE'}>

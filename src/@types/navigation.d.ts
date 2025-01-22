@@ -5,7 +5,6 @@ export declare global {
       StatisticsScreen: {
         colorType: string;
         title: string;
-        subtitle: string;
       };
       NewMeal: undefined;
       Summary: {
@@ -13,6 +12,9 @@ export declare global {
       };
       MealDetails: {
         id: string;
+      };
+      EditMeal: {
+        id:string;
       }
     }
   }

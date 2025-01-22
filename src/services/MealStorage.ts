@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { MEALKEY, storage } from "@storage/dailyDietStorage";
+import { MEALKEY, SEQUENCESKEY, storage } from "@storage/dailyDietStorage";
 import { generateUUID } from "@utils/generateUUIDv4";
 import { Alert } from "react-native";
 import { MealProps } from "src/schemas/MealSchema";
@@ -35,10 +35,25 @@ const getMealStorage = () => {
             const response = storage.getString(MEALKEY);
 
             if (response) {
-                const previousMeals = JSON.parse(response);
+                const previousMeals: Meals[] = JSON.parse(response);
 
                 const mealDate = data.date;
                 const existingSection = previousMeals.find((section: Meals) => section.title === mealDate);
+
+                const isSequence = data.isPart;
+
+                const sequences = storage.getNumber(SEQUENCESKEY);
+
+                if (sequences !== undefined) {
+                    if (isSequence) {
+                        storage.set(SEQUENCESKEY, sequences + 1);
+                    } else if (!isSequence) {
+                        storage.set(SEQUENCESKEY, 0);
+                    }
+                } else {
+                    storage.set(SEQUENCESKEY, isSequence ? 1 : 0);
+                }
+                
 
                 if (existingSection) {
                     existingSection.data.push(meal);
@@ -122,19 +137,36 @@ const getMealStorage = () => {
         }
     }
 
-    const updateMeal = (id: string, newMeal: Meal) => {
+    const updateMeal = (id: string, newMeal: MealProps) => {
         try {
             const response = storage.getString(MEALKEY);
             if (response) {
                 const meals: Meals[] = JSON.parse(response);
-                const newMeals = meals.map(section => ({
-                    ...section,
-                    data: section.data.map(meal =>
-                        meal.id === id ? { ...meal, newMeal } : meal
-                    )
-                }));
 
-                storage.set(MEALKEY, JSON.stringify(newMeals));
+                meals.map(section => {
+                    const mealIndex = section.data.findIndex(meal => meal.id === id);
+                    if (mealIndex >= 0) {
+                        section.data.splice(mealIndex, 1);
+                        if (section.data.length < 1) {
+                            const sectionIndex = meals.findIndex(s => s.title === section.title);
+                            meals.splice(sectionIndex, 1);
+                        }
+                    }
+                })
+                const existingTitle = meals.find((section: Meals) => section.title === newMeal.date);
+
+                if (existingTitle) {
+                    existingTitle.data.push({ id, ...newMeal });
+                } else {
+                    meals.push({
+                        title: newMeal.date,
+                        data: [{ id, ...newMeal }],
+                    })
+                }
+
+                storage.set(MEALKEY, JSON.stringify(meals));
+                console.log('Sucesso', newMeal);
+                navigation.navigate('Home');
             }
 
         } catch (error) {

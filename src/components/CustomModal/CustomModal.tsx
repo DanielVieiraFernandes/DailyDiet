@@ -3,13 +3,13 @@ import {Box} from '@components/Box/Box';
 import {Text} from '@components/Text/Text';
 import {Button} from '@components/Button/Button';
 import {useModalStore} from '../../zustand/ModalStore';
-import { getMealStorage } from '@services/MealStorage';
+import {getMealStorage} from '@services/MealStorage';
 
 type CustomModalProps = {
-    id:string;
-}
+  id: string;
+};
 
-export function CustomModal({id}:CustomModalProps) {
+export function CustomModal({id}: CustomModalProps) {
   const {modalVisible, setModalVisible} = useModalStore();
   const {delMeal} = getMealStorage();
 
@@ -19,7 +19,7 @@ export function CustomModal({id}:CustomModalProps) {
     <Modal
       transparent={true}
       visible={modalVisible}
-      animationType="slide"
+      animationType="fade"
       onRequestClose={() => setModalVisible(false)}>
       <Box
         flex={1}
