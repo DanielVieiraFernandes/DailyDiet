@@ -60,17 +60,17 @@ export function StatisticsScreen() {
         <Text variant="TitleStatistics" paddingVertical="m">
           Estatíticas gerais
         </Text>
-        <LargeCard title={sequences} subtitle="sequências de pratos" />
-        <LargeCard title={registerMeals} subtitle="refeições registradas" />
+        <LargeCard title={sequences === "undefined" ? '0' : sequences} subtitle="sequências de pratos" />
+        <LargeCard title={registerMeals || '0'} subtitle="refeições registradas" />
         <Box flexDirection="row" gap="m">
           <SmallCard
             type="PRIMARY"
-            title={insideDiet}
+            title={insideDiet || '0'}
             subtitle="refeições dentro da dieta"
           />
           <SmallCard
             type="SECONDARY"
-            title={outsideDiet}
+            title={outsideDiet || '0'}
             subtitle="refeições fora da dieta"
           />
         </Box>

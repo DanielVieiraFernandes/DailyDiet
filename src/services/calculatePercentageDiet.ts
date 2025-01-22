@@ -17,7 +17,7 @@ type PercentageDiet = {
 
 export const PercentageDietStorage = create<PercentageDiet>((set) => ({
     overall: '0%',
-    sequences: '',
+    sequences: '0',
     registerMeals: '',
     insideDiet: '',
     outsideDiet: '',
@@ -51,6 +51,7 @@ export const usePercentageDietStorage = () => {
                 const total = inside + outside;
                 const sequence = storage.getNumber(SEQUENCESKEY);
                 console.log(sequence + 'Esta é a sequência');
+                
 
 
                 const percentageInside = (inside / total) * 100;

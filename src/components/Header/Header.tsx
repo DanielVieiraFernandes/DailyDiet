@@ -1,12 +1,18 @@
 import {Box} from '@components/Box/Box';
 import {Image, StyleSheet, TouchableOpacity} from 'react-native';
-import logoImg from '@assets/Logo.png';
-import {ArrowLeft} from 'phosphor-react-native';
+import logoImg from '@assets/splash.png';
+import {
+  ArrowLeft,
+  GithubLogo,
+  PersonSimple,
+  PersonSimpleCircle,
+} from 'phosphor-react-native';
 import React from 'react';
 import {Text} from '@components/Text/Text';
 import {useTheme} from '@shopify/restyle';
 import {ThemeProps} from '@theme/theme';
 import {useNavigation} from '@react-navigation/native';
+import Person from "@assets/person.svg";
 
 type HeaderProps = {
   CANGOBACK?: boolean;
@@ -34,7 +40,12 @@ export function Header({CANGOBACK = false, color, title}: HeaderProps) {
             width={50}
             height={50}
             borderRadius={20000}
-            backgroundColor="GREEN_DARK"></Box>
+            bg='GRAY_4'
+            p='s'
+            justifyContent="center"
+            alignItems="center">
+            <Person width={"100%"} height={"100%"} />
+          </Box>
         </React.Fragment>
       ) : (
         <>
@@ -53,8 +64,8 @@ export function Header({CANGOBACK = false, color, title}: HeaderProps) {
 
 const styles = StyleSheet.create({
   img: {
-    width: 100,
-    height: 50,
+    width: 120,
+    height: 120,
     resizeMode: 'contain',
   },
 });

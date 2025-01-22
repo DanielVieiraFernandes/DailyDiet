@@ -155,6 +155,20 @@ const getMealStorage = () => {
                 })
                 const existingTitle = meals.find((section: Meals) => section.title === newMeal.date);
 
+                const isSequence = newMeal.isPart;
+
+                const sequences = storage.getNumber(SEQUENCESKEY);
+
+                if (sequences !== undefined) {
+                    if (isSequence) {
+                        storage.set(SEQUENCESKEY, sequences + 1);
+                    } else if (!isSequence) {
+                        storage.set(SEQUENCESKEY, 0);
+                    }
+                } else {
+                    storage.set(SEQUENCESKEY, isSequence ? 1 : 0);
+                }
+
                 if (existingTitle) {
                     existingTitle.data.push({ id, ...newMeal });
                 } else {

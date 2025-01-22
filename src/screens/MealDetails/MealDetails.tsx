@@ -31,7 +31,7 @@ export function MealDetails() {
   console.log(modalVisible);
 
   return (
-    <Screen bg="GREEN_LIGHT" padding={undefined}>
+    <Screen bg="GRAY_6" padding={undefined}>
       <Box p="l">
         <Header CANGOBACK title="refeição" />
       </Box>
